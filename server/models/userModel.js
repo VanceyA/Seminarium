@@ -9,7 +9,12 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true
-    }
+    },
+    schedule: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Seminar',
+        default: []
+    }]
 });
 
 const User = mongoose.model('User', userSchema);
