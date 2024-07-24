@@ -54,8 +54,4 @@ const shouldShowTimeHeader = (index) => {
     if (index === 0) return true;
     return seminars.value[index].time !== seminars.value[index - 1].time;
 };
-
-const handleClick = (seminar) => {
-    console.log(seminar);
-};
 </script>

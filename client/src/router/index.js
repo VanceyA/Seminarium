@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import SeminarHome from '../views/SeminarHome.vue'
 
 const router = createRouter({
+  // Grabs base url
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
