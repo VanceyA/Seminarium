@@ -16,7 +16,9 @@ const port = process.env.PORT || 8080;
 
 
 // Routes
-app.use('/api', require('./routes/seminarRoutes'));
+app.use('/api/seminars', require('./routes/seminarRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/schedule', require('./routes/scheduleRoutes'));
 
 
 app.listen(port, () => {

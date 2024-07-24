@@ -14,7 +14,7 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Seminar',
         default: []
-    }]
+    }],
 });
 
 const User = mongoose.model('User', userSchema);

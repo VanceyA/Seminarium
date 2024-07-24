@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { User } from '../models/userModel';
 import { errorHandler } from '../controllers/helpers/errorHandler';
 
-export default class UserController {
+class UserController {
     static async getUserById(req, res) {
         try {
             const user = await User.findById(req.params.id);
@@ -30,3 +30,5 @@ export default class UserController {
         }
     }
 }
+
+export default UserController;
