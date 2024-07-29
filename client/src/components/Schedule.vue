@@ -22,7 +22,7 @@ const seminars = ref([
         description: "This is the first seminar",
         time: "12:00 PM",
         fields: ["All CSET Majors"],
-        presenter: "John Smith",
+        presenter: ["John Smith"],
         room: "SET 301",
         type: "Lecture"
     },
@@ -32,7 +32,7 @@ const seminars = ref([
         description: "This is the third seminar",
         time: "12:00 PM",
         fields: ["Computer Science"],
-        presenter: "Bob Johnson",
+        presenter: ["Bob Johnson"],
         room: "SET 422",
         type: "Panel"
     }

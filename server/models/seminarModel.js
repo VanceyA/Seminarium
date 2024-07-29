@@ -24,10 +24,10 @@ const seminarSchema = new Schema({
         required: true,
         enum: ['Computing', 'Artificial Intelligence', 'Cyber Security']
     }],
-    presenter: {
+    presenters: [{
         type: String,
         required: true
-    },
+    }],
     room: {
         type: String,
         required: true
