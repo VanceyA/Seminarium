@@ -18,13 +18,13 @@
             </div>
 
             <p class="text-md text-wrap pt-2">Description: {{ seminar.description }}</p>
-            <p class="text-md text-wrap pt-2"><template v-if="seminar.presenters.length > 1">Presenters: </template><template v-else>Presenter: </template>{{ presenterList }}</p>
+            <p class="text-md text-wrap pt-2">{{ seminar.presenters }}</p>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, computed, inject } from 'vue';
+import { ref, inject } from 'vue';
 import { useRoute } from 'vue-router';
 import AddToScheduleButton from './AddToScheduleButton.vue';
 import Pill from './Pill.vue';
@@ -54,10 +54,6 @@ const getFieldColor = (field) => {
 const getTypeColor = (type) => {
     return typeColorMap[type] || 'gray-500';
 };
-
-const presenterList = computed(() => {
-    return testSeminar.value.presenters.join(", ");
-});
 
 const seminar = testSeminar.value;
 </script>

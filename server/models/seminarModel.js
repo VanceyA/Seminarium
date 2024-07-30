@@ -24,10 +24,10 @@ const seminarSchema = new Schema({
         required: true,
         enum: ['All Majors', 'Applied & Computational Mathematics', 'Biology', 'Bioinformatics', 'Biotechnology', 'Chem/Biochem', 'Computer Science', 'Cybersecurity', 'Design', 'Earth & Environmental Science', 'Engineering', 'Geoscience', 'Information Technology', 'Mathematics', 'STEM Education', 'Software Engineering']
     }],
-    presenters: [{
+    presenters: {
         type: String,
         required: true
-    }],
+    },
     room: {
         type: String,
         required: true
