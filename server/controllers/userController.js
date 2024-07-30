@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Schedule = require('../models/scheduleModel');
 const errorHandler = require('./helpers/errorHandler');
 
 class UserController {
@@ -18,10 +19,10 @@ class UserController {
             // Find or create the user in your database
             let user = await User.findOne({ userId });
             if (!user) {
-                user = new User({ userId, email });
+                user = User.create({ userId: userId, email: email });
+                user.schedule = new Schedule({ user: user._id, userId: user.userId, userEmail: user.email });
                 await user.save();
             }
-
             // Send the user information back to the client
             res.json(user);
         } catch (err) {
