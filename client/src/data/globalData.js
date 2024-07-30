@@ -8,7 +8,7 @@ export const fieldColorMap = {
     'Computer Science': 'red-600',
     'Cybersecurity': 'green-500',
     'Design': 'purple-500',
-    'Earth & Environmental Science': 'blue-500',
+    'EES': 'blue-500',
     'Engineering': 'yellow-500',
     'Geoscience': 'purple-500',
     'Information Technology': 'green-500',
