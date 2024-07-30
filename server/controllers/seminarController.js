@@ -14,7 +14,7 @@ class SeminarController {
     static async getSeminarById(req, res) {
         try {
             const seminar = await Seminar.findById(req.params.id);
-            return res.status(200).send(seminar);
+            return res.status(200).json(seminar);
         } catch (err) {
             return errorHandler(err, req, res);
         }
