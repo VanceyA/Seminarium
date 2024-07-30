@@ -1,23 +1,24 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const scheduleSchema = new Schema({
     userId: {
         type: String,
         required: true
     },
-    email: {
+    userEmail: {
         type: String,
         required: true
     },
-    schedule: {
+    seminars: [{
         type: Schema.Types.ObjectId,
-        ref: 'Schedule'
-    },
+        ref: 'Seminar',
+        default: []
+    }],
 });
 
-const User = mongoose.model('User', userSchema);
+const Schedule = mongoose.model('Schedule', scheduleSchema);
 
 module.exports = {
-    User: User
-};
+    Schedule: Schedule
+}
