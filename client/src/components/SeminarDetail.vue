@@ -18,31 +18,20 @@
             </div>
 
             <p class="text-md text-wrap pt-2">Description: {{ seminar.description }}</p>
-            <p class="text-md text-wrap pt-2">{{ seminar.presenters }}</p>
+            <p class="text-md text-wrap pt-2" v-for="presenter in seminar.presenters">{{ presenter }}</p>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, inject } from 'vue';
+import { ref, onMounted, inject } from 'vue';
 import { useRoute } from 'vue-router';
 import AddToScheduleButton from './AddToScheduleButton.vue';
 import Pill from './Pill.vue';
 
 const route = useRoute();
-const id = parseInt(route.params.id);
-
-
-const testSeminar = ref({
-    _id: 1,
-    title: "Exploring the Ethics of Generative AI in Higher Ed.",
-    description: "This is the first seminar",
-    time: "12:00 PM",
-    fields: ["All CSET Majors"],
-    presenters: ["John Smith"],
-    room: "SET 301",
-    type: "Lecture"
-});
+const id = route.params.id;
+const seminar = ref({});
 
 const fieldColorMap = inject('fieldColorMap');
 const typeColorMap = inject('seminarTypeColorMap');
@@ -55,5 +44,11 @@ const getTypeColor = (type) => {
     return typeColorMap[type] || 'gray-500';
 };
 
-const seminar = testSeminar.value;
+onMounted(async () => {
+    const response = await fetch(`/api/seminars/${id}`);
+    const data = await response.json();
+    seminar.value = data;
+    seminar.value.presenters = seminar.value.presenters.split('\n');
+});
+
 </script>

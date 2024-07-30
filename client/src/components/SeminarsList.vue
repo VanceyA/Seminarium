@@ -11,44 +11,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import SeminarItem from './SeminarItem.vue';
 import TimeHeader from './TimeHeader.vue';
 
-const seminars = ref([
-    {
-        _id: 1,
-        title: "Exploring the Ethics of Generative AI in Higher Ed.",
-        description: "This is the first seminar",
-        time: "12:00 PM",
-        fields: ["All CSET Majors"],
-        presenters: ["John Smith"],
-        room: "SET 301",
-        type: "Lecture"
-    },
-    {
-        _id: 2,
-        title: "Innovation Plaza",
-        description: "This is the second seminar",
-        time: "11:00 AM",
-        fields: ["Computer Science"],
-        presenters: ["Jane Doe"],
-        room: "SET 420",
-        type: "Lecture"
-    },
-    {
-        _id: 3,
-        title: "Level Unlocked: Tech Based Internships",
-        description: "This is the third seminar",
-        time: "12:00 PM",
-        fields: ["Computer Science"],
-        presenters: ["Bob Johnson"],
-        room: "SET 422",
-        type: "Panel"
-    }
-]);
+const seminars = ref([]);
 
-seminars.value.sort((a, b) => a.time.localeCompare(b.time));
+onMounted(async () => {
+    const response = await fetch('/api/seminars');
+    const data = await response.json();
+    seminars.value = data.sort((a, b) => a.time.localeCompare(b.time));
+});
 
 const shouldShowTimeHeader = (index) => {
     if (index === 0) return true;
