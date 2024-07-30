@@ -1,5 +1,5 @@
-const User = require('../models/userModel');
-const Seminar = require('../models/seminarModel');
+const { User } = require('../models/userModel');
+const { Seminar } = require('../models/seminarModel');
 const errorHandler = require('./helpers/errorHandler');
 
 class ScheduleController {

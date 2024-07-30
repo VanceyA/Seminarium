@@ -1,11 +1,11 @@
 const { errorHandler } = require('./helpers/errorHandler');
-const Seminar = require('../models/seminarModel');
+const { Seminar } = require('../models/seminarModel');
 
 class SeminarController {
     static async getAllSeminars(req, res) {
         try {
-            const seminars = await req.db.Seminar.find();
-            return res.status(200).send(seminars);
+            const seminars = await Seminar.find();
+            return res.status(200).json(seminars);
         } catch (err) {
             return errorHandler(err, req, res);
         }
