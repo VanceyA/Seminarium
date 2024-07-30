@@ -1,6 +1,6 @@
-import { User } from '../models/userModel';
-import { Seminar } from '../models/seminarModel';
-import { errorHandler } from '../controllers/helpers/errorHandler';
+const User = require('../models/userModel');
+const Seminar = require('../models/seminarModel');
+const errorHandler = require('./helpers/errorHandler');
 
 class ScheduleController {
     static async getSchedule(req, res) {
@@ -37,4 +37,4 @@ class ScheduleController {
     }
 }
 
-export default ScheduleController;
+module.exports = ScheduleController;

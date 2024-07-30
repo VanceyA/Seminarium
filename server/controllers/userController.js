@@ -1,6 +1,5 @@
-import jwt from 'jsonwebtoken';
-import { User } from '../models/userModel';
-import { errorHandler } from '../controllers/helpers/errorHandler';
+const User = require('../models/userModel');
+const errorHandler = require('./helpers/errorHandler');
 
 class UserController {
     static async getUserById(req, res) {
@@ -31,4 +30,4 @@ class UserController {
     }
 }
 
-export default UserController;
+module.exports = UserController;

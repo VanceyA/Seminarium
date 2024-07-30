@@ -17,7 +17,7 @@ app.use('/api/seminars', require('./routes/seminarRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/schedule', require('./routes/scheduleRoutes'));
 
-// For static files, use index.html (ran into issues with refreshing pages without this)
+// For static files, use index.html (ran into issues with refreshing pages without this) (vue-router compatability)
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });

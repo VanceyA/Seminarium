@@ -1,10 +1,6 @@
-import express from 'express';
-import router from express.Router();
-import {
-    getSchedule,
-    addSeminarToSchedule,
-    removeSeminarFromSchedule
-} from '../controllers/userAPI';
+const express = require('express');
+const router = express.Router();
+const { getSchedule, addSeminarToSchedule, removeSeminarFromSchedule } = require('../controllers/scheduleController');
 
 router.get('/', getSchedule);
 router.post('/:id', addSeminarToSchedule);

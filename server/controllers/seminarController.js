@@ -1,5 +1,5 @@
-import { errorHandler } from './helpers/errorHandler';
-import { Seminar } from '../models/seminarModel';
+const { errorHandler } = require('./helpers/errorHandler');
+const Seminar = require('../models/seminarModel');
 
 class SeminarController {
     static async getAllSeminars(req, res) {
@@ -19,6 +19,6 @@ class SeminarController {
             return errorHandler(err, req, res);
         }
     }
-}
+};
 
-export default SeminarController;
+module.exports = SeminarController;

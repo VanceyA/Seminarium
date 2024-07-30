@@ -1,11 +1,8 @@
-import express from 'express';
-import router from express.Router();
-import jwt from 'jsonwebtoken';
+const express = require('express');
+const router = express.Router();
+// const jwt = require('jsonwebtoken');
 
-import { 
-    getAllSeminars,
-    getSeminarById,
- } from '../controllers/seminarAPI';
+const { getAllSeminars, getSeminarById } = require('../controllers/seminarController');
 
 // function verifyToken(req, res, next) {
 //     const token = req.body.token || req.query.token || req.headers['x-access-token'];
