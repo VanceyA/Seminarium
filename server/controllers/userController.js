@@ -9,7 +9,7 @@ class UserController {
             const userId = studentID;
 
             let user = await User.findOne({ userId: userId });
-            return res.status(200).send(user);
+            return res.status(200).json(user);
         } catch (err) {
             return errorHandler(err, req, res);
         }
@@ -20,7 +20,7 @@ class UserController {
             const { studentID, name } = req.user;
             const userId = studentID;
 
-            let user = await User.findOne({ userId: userId });
+            let user = await User.findOne({ userId: userId }).populate('schedule');
 
             if (!user) {
                 user = await User.create({ userId: userId, name: name, email: `d${userId}@utahtech.edu` });

@@ -9,7 +9,11 @@ class ScheduleController {
             const userId = studentID;
 
             const user = await User.findOne({ userId: userId }).populate('schedule');
-            return res.status(200).json(user.schedule.seminars);
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
+            const seminars = await Seminar.find({ _id: { $in: user.schedule.seminars } });
+            return res.status(200).json(seminars);
         } catch (err) {
             return errorHandler(err, req, res);
         }

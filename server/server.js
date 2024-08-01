@@ -34,7 +34,7 @@ app.use('/api/seminars', require('./routes/seminarRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/schedule', require('./routes/scheduleRoutes'));
 
-app.post('/api/get-jwt', (req, res) => {
+app.get('/api/get-jwt', (req, res) => {
     const secret_key = process.env.SECRET_KEY;
     const payload = {
         studentID: "00111111",
