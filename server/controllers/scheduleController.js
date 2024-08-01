@@ -42,7 +42,7 @@ class ScheduleController {
             await user.schedule.save();
             return res.status(201).json(user);
         } catch (err) {
-            console.log(err);
+            return errorHandler(err, req, res);
         }
     }
 
