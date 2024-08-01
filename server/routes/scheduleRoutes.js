@@ -4,7 +4,7 @@ const { getSchedule, addSeminarToSchedule, removeSeminarFromSchedule } = require
 const { verifyToken } = require('./middleware/verifyToken');
 
 router.get('/', verifyToken, getSchedule);
-router.post('/:id', verifyToken, addSeminarToSchedule);
-router.delete('/:id', verifyToken, removeSeminarFromSchedule);
+router.post('/:seminarId', verifyToken, addSeminarToSchedule);
+router.delete('/:seminarId', verifyToken, removeSeminarFromSchedule);
 
 module.exports = router;

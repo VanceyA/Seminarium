@@ -13,11 +13,11 @@ class ScheduleController {
 
     static async addSeminarToSchedule(req, res) {
         try {
-            const user = await User.findById(req.user.userId);
-            const seminar = await Seminar.findById(req.params.id);
+            const user = await User.findById(req.user._id);
+            const seminar = await Seminar.findById(req.params.seminarId);
             user.schedule.push(seminar);
             await user.save();
-            return res.status(200).send(user);
+            return res.status(201).send(user);
         } catch (err) {
             return errorHandler(err, req, res);
         }
@@ -25,9 +25,10 @@ class ScheduleController {
 
     static async removeSeminarFromSchedule(req, res) {
         try {
-            const user = await User.findById(req.user.userId);
-            const seminar = await Seminar.findById(req.params.id);
-            user.schedule.pull(seminar);
+            const user = await User.findById(req.user._id);
+            const seminar = await Seminar.findById(req.params.seminarId);
+            const index = user.schedule.indexOf(seminar);
+            user.schedule.splice(index, 1);
             await user.save();
             return res.status(200).send(user);
         } catch (err) {
