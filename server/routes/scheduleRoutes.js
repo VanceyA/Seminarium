@@ -3,8 +3,8 @@ const router = express.Router();
 const { getSchedule, addSeminarToSchedule, removeSeminarFromSchedule } = require('../controllers/scheduleController');
 const { verifyToken } = require('./middleware/verifyToken');
 
-router.get('/', getSchedule);
-router.post('/:id', addSeminarToSchedule);
-router.delete('/:id', removeSeminarFromSchedule);
+router.get('/', verifyToken, getSchedule);
+router.post('/:id', verifyToken, addSeminarToSchedule);
+router.delete('/:id', verifyToken, removeSeminarFromSchedule);
 
 module.exports = router;

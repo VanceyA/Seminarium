@@ -1,12 +1,11 @@
 const { User } = require('../models/userModel');
 const { Seminar } = require('../models/seminarModel');
-const errorHandler = require('./helpers/errorHandler');
+const { errorHandler } = require('./helpers/errorHandler');
 
 class ScheduleController {
     static async getSchedule(req, res) {
         try {
-            const user = await User.findById(req.params.id);
-            return res.status(200).json(user.schedule);
+            return res.status(200).json(req.user.schedule);
         } catch (err) {
             return errorHandler(err, req, res);
         }

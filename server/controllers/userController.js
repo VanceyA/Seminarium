@@ -1,6 +1,6 @@
-const User = require('../models/userModel');
-const Schedule = require('../models/scheduleModel');
-const errorHandler = require('./helpers/errorHandler');
+const { User } = require('../models/userModel');
+const { Schedule } = require('../models/scheduleModel');
+const { errorHandler } = require('./helpers/errorHandler');
 
 class UserController {
     static async getUserById(req, res) {
@@ -16,17 +16,20 @@ class UserController {
         try {
             const { studentID, name } = req.user;
             const userId = studentID;
-
+            console.log(studentID, name);
+            console.log(userId);
             let user = await User.findOne({ userId: userId });
+            console.log(user);
             if (!user) {
-                user = User.create({ userId: userId, name: name, email: `d${userId}@utahtech.edu` });
-                let schedule = Schedule.create({ user: user._id, userId: user.userId, username: user.name ,userEmail: user.email });
+                user = await User.create({ userId: userId, name: name, email: `d${userId}@utahtech.edu` });
+                let schedule = await Schedule.create({ user: user._id, userId: user.userId, username: user.name , userEmail: user.email });
                 user.schedule = schedule._id;
                 await user.save();
             }
 
             return res.status(201).json(user);
         } catch (err) {
+            console.log(err);
             return res.status(401).send('Invalid token');
         }
     }

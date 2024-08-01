@@ -5,7 +5,7 @@ const { verifyToken } = require('./middleware/verifyToken');
 
 // router.get('/', verifyToken, getAllSeminars);
 
-router.get('/', getAllSeminars);
-router.get('/:id',getSeminarById);
+router.get('/', verifyToken,getAllSeminars);
+router.get('/:id', verifyToken, getSeminarById);
 
 module.exports = router;
