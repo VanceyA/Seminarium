@@ -17,7 +17,6 @@ class UserController {
             const { studentID, name } = req.user;
             const userId = studentID;
 
-            // Find or create the user in your database
             let user = await User.findOne({ userId });
             if (!user) {
                 user = User.create({ userId: userId, name: name, email: `d${userId}@utahtech.edu` });
@@ -26,10 +25,10 @@ class UserController {
                 user.schedule = schedule._id;
                 await user.save();
             }
-            // Send the user information back to the client
-            res.json(user);
+
+            return res.status(201).json(user);
         } catch (err) {
-            res.status(401).send('Invalid token');
+            return res.status(401).send('Invalid token');
         }
     }
 }
