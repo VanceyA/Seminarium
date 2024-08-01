@@ -17,11 +17,10 @@ class UserController {
             const { studentID, name } = req.user;
             const userId = studentID;
 
-            let user = await User.findOne({ userId });
+            let user = await User.findOne({ userId: userId });
             if (!user) {
                 user = User.create({ userId: userId, name: name, email: `d${userId}@utahtech.edu` });
-                let schedule = new Schedule({ user: user._id, userId: user.userId, username: user.name ,userEmail: user.email });
-                await schedule.save();
+                let schedule = Schedule.create({ user: user._id, userId: user.userId, username: user.name ,userEmail: user.email });
                 user.schedule = schedule._id;
                 await user.save();
             }
