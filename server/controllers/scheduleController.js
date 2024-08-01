@@ -20,14 +20,29 @@ class ScheduleController {
             const { studentID, name } = req.user;
             const userId = studentID;
 
-            let user = await User.findOne({ userId: userId });
+            let user = await User.findOne({ userId: userId }).populate('schedule');
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
+
             const seminar = await Seminar.findById(req.params.seminarId);
-            user.schedule.push(seminar);
-            await user.save();
-            req.user = user;
-            return res.status(201).send(user);
+            if (!seminar) {
+                return res.status(404).json({ message: "Seminar not found" });
+            }
+
+            if (!user.schedule) {
+                return res.status(404).json({ message: "Schedule not found" });
+            }
+
+            if (user.schedule.seminars.includes(seminar._id)) {
+                return res.status(400).send({ message: "Seminar already in schedule" });
+            }
+
+            user.schedule.seminars.push(seminar._id);
+            await user.schedule.save();
+            return res.status(201).json(user);
         } catch (err) {
-            return errorHandler(err, req, res);
+            console.log(err);
         }
     }
 
@@ -36,13 +51,32 @@ class ScheduleController {
             const { studentID, name } = req.user;
             const userId = studentID;
 
-            let user = await User.findOne({ userId: userId });
+            let user = await User.findOne({ userId: userId }).populate('schedule');
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
+
             const seminar = await Seminar.findById(req.params.seminarId);
-            const index = user.schedule.indexOf(seminar);
-            user.schedule.splice(index, 1);
-            await user.save();
-            req.user = user;
-            return res.status(200).send(user);
+            if (!seminar) {
+                return res.status(404).json({ message: "Seminar not found" });
+            }
+
+            if (!user.schedule) {
+                return res.status(404).json({ message: "Schedule not found" });
+            }
+
+            if (!user.schedule.seminars.includes(seminar._id)) {
+                return res.status(400).send({ message: "Seminar not in schedule" });
+            }
+
+            const index = user.schedule.seminars.indexOf(seminar._id);
+            if (index === -1) {
+                return res.status(400).send({ message: "Seminar not found in schedule" });
+            }
+
+            user.schedule.seminars.splice(index, 1);
+            await user.schedule.save();
+            return res.status(200).json(user);
         } catch (err) {
             return errorHandler(err, req, res);
         }
