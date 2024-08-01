@@ -5,7 +5,10 @@ const { errorHandler } = require('./helpers/errorHandler');
 class UserController {
     static async getUserById(req, res) {
         try {
-            const user = await User.findById(req.params.id);
+            const { studentID, name } = req.user;
+            const userId = studentID;
+
+            let user = await User.findOne({ userId: userId });
             return res.status(200).send(user);
         } catch (err) {
             return errorHandler(err, req, res);
@@ -16,10 +19,9 @@ class UserController {
         try {
             const { studentID, name } = req.user;
             const userId = studentID;
-            console.log(studentID, name);
-            console.log(userId);
+
             let user = await User.findOne({ userId: userId });
-            console.log(user);
+
             if (!user) {
                 user = await User.create({ userId: userId, name: name, email: `d${userId}@utahtech.edu` });
                 let schedule = await Schedule.create({ user: user._id, userId: user.userId, username: user.name , userEmail: user.email });
