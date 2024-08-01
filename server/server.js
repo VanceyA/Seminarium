@@ -37,9 +37,8 @@ app.use('/api/schedule', require('./routes/scheduleRoutes'));
 app.post('/api/get-jwt', (req, res) => {
     const secret_key = process.env.SECRET_KEY;
     const payload = {
-        userId: "d00111111",
-        username: "John Smith",
-        userEmail: "d00111111@utahtech.edu"
+        studentID: "00111111",
+        name: "John Smith"
     };
     const options = {
         expiresIn: '1h'
