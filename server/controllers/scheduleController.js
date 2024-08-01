@@ -8,8 +8,8 @@ class ScheduleController {
             const { studentID, name } = req.user;
             const userId = studentID;
 
-            let user = await User.findOne({ userId: userId });
-            return res.status(200).json(user.schedule);
+            let user = await User.findOne({ userId: userId }).populate('schedule');
+            return res.status(200).json(user.schedule.seminars);
         } catch (err) {
             return errorHandler(err, req, res);
         }
