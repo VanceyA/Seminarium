@@ -11,14 +11,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, inject } from 'vue';
 import SeminarItem from './SeminarItem.vue';
 import TimeHeader from './TimeHeader.vue';
 
 const seminars = ref([]);
 
 onMounted(async () => {
-    const response = await fetch('/api/seminars');
+    const response = await fetch('/api/seminars', {
+        headers: {
+            'Authorization': `Bearer ${inject('globalUserData').jwt}`
+        }
+    });
     const data = await response.json();
     seminars.value = data.sort((a, b) => a.time.localeCompare(b.time));
 });

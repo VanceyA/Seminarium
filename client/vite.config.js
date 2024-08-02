@@ -16,5 +16,10 @@ export default defineConfig({
   build: {
     outDir: '../server/public',
     emptyOutDir: true,
+  },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:8080'
+    }
   }
 })
