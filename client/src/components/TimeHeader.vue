@@ -7,7 +7,7 @@
 </template>
   
 <script setup>
-    import { toRefs, defineProps } from 'vue';
+    import { toRefs } from 'vue';
     const props = defineProps(["time"]);
     const { time } = toRefs(props);
 </script>
