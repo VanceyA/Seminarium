@@ -11,7 +11,7 @@
             <h1 class="text-white font-bold text-2xl cursor-pointer" @click="goHome()">Seminarium</h1>
         </header>
         <div v-if="navVisible" class="backdrop" @click="toggleNav"></div>
-        <nav :class="{'translate-x-0': navVisible, '-translate-x-full': !navVisible}" class="nav-menu fixed top-0 left-0 h-full w-auto bg-zinc-800 flex flex-col items-start space-y-4 p-4 pr-24 md:pr-32 transition-transform duration-300 ease-in-out">
+        <nav :class="{'translate-x-0': navVisible, '-translate-x-full': !navVisible}" class="nav-menu fixed top-0 left-0 h-full w-auto bg-zinc-800 flex flex-col items-start space-y-4 p-4 pr-24 md:pr-48 transition-transform duration-300 ease-in-out">
             <h1 class="text-white font-bold text-2xl cursor-pointer" @click="goHome()">Seminarium</h1>
             <router-link to="/" class="nav-item" :class="{ active: $route.path === '/' }" @click="toggleNav">
                 Seminars

@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { toRefs, defineProps, computed } from 'vue';
+import { toRefs, computed } from 'vue';
 
 const props = defineProps({
     item: String,
@@ -13,6 +13,6 @@ const props = defineProps({
 const { item, desiredColor } = toRefs(props);
 
 const pillClass = computed(() => {
-    return `bg-${desiredColor.value} rounded-full px-2 py-1 text-white text-xs`;
+    return `bg-${desiredColor.value} rounded-full px-2 py-1 text-white text-sm`;
 });
 </script>
