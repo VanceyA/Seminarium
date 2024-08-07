@@ -18,8 +18,8 @@ def import_csv_to_mongodb(input_file, mongo_uri, database_name, collection_name)
 
 # Replace the following variables with your specific details
 input_csv = "Preprocessed_Seminarium_Test_Data.csv"
-mongo_uri = ""
-database_name = "seminariumDev"
+mongo_uri = "mongodb://localhost:27017"
+database_name = "seminarium"
 collection_name = "seminars"
 
 import_csv_to_mongodb(input_csv, mongo_uri, database_name, collection_name)
