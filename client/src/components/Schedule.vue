@@ -24,7 +24,20 @@ onMounted(async () => {
         }
     });
     const data = await response.json();
-    schedule.value = data.sort((a, b) => a.time.localeCompare(b.time));
+    schedule.value = data.sort((a, b) => {
+        const parseTime = (timeString) => {
+            const [timePart, period] = timeString.split(' ');
+            let [hour, minute] = timePart.split(':').map(Number);
+            if (period === 'PM' && hour !== 12) {
+                hour += 12;
+            } else if (period === 'AM' && hour === 12) {
+                hour = 0;
+            }
+            return hour * 60 + minute; // Convert time to minutes for easier comparison
+        };
+
+        return parseTime(a.time) - parseTime(b.time);
+    });
 });
 
 const shouldShowTimeHeader = (index) => {
