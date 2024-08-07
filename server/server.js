@@ -1,7 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
 require('dotenv').config();
+
+const devMode = process.env.NODE_ENV !== 'production';
 
 const app = express();
 
@@ -58,7 +63,19 @@ app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
+if (devMode) {
+    const server = http.createServer(app);
+    server.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+    });
+} else {
+    const options = {
+        cert: fs.readFileSync('seminarium_cert.crt'),
+        ca: fs.readFileSync('seminarium_interm.crt'),
+        key: fs.readFileSync('seminarium.key')
+    };
+    const server = https.createServer(options, app);
+    server.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+    });
+}
