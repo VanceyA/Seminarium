@@ -1,9 +1,9 @@
 export const fieldColorMap = {
     'All Majors': 'blue-500',
     'Applied & Computational Mathematics': 'green-500',
-    'Biology': 'yellow-300',
-    'Bioinformatics': 'yellow-300',
-    'Biotechnology': 'yellow-300',
+    'Biology': 'yellow-500',
+    'Bioinformatics': 'yellow-500',
+    'Biotechnology': 'yellow-500',
     'Chem/Biochem': 'red-600',
     'Computer Science': 'purple-500',
     'Cybersecurity': 'purple-500',
@@ -13,7 +13,7 @@ export const fieldColorMap = {
     'Geoscience': 'indigo-500',
     'Information Technology': 'purple-500',
     'Mathematics': 'green-500',
-    'STEM Education' : 'teal-400',
+    'STEM Education' : 'green-500',
     'Software Engineering': 'purple-500'
     // Add more mappings as needed
 };
