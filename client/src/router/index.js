@@ -20,12 +20,22 @@ const router = createRouter({
       path: '/seminars/:id',
       name: 'seminar',
       component: () => import('../views/SeminarView.vue')
+    },
+    {
+      path: '/error',
+      name: 'error',
+      component: () => import('../views/ErrorView.vue')
     }
   ]
 });
 
 router.beforeEach(async (to, from, next) => {
   try {
+
+    if (to.name === 'error') {
+      next();
+      return;
+    }
 
     const urlParams = new URLSearchParams(window.location.search);
     const jwtFromQuery = urlParams.get('user');
