@@ -31,8 +31,7 @@ class UserController {
 
             return res.status(201).json(user);
         } catch (err) {
-            console.log(err);
-            return res.status(401).send('Invalid token');
+            return res.status(401).json(err);
         }
     }
 }
