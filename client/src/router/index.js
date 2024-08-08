@@ -58,6 +58,7 @@ router.beforeEach(async (to, from, next) => {
           'Authorization': `Bearer ${globalUserData.jwt}`
         }
       });
+      console.log(response);
       const data = await response.json();
       globalUserData.user = data;
     }
