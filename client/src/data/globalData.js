@@ -1,22 +1,24 @@
 export const fieldColorMap = {
-    'All Majors': 'blue-500', 
+    'All Majors': 'blue-500',
     'Applied & Computational Mathematics': 'green-500',
-    'Biology': 'blue-500',
-    'Bioinformatics': 'yellow-500',
-    'Biotechnology': 'purple-500',
+    'Biology': 'yellow-300',
+    'Bioinformatics': 'yellow-300',
+    'Biotechnology': 'yellow-300',
     'Chem/Biochem': 'red-600',
-    'Computer Science': 'red-600',
-    'Cybersecurity': 'green-500',
-    'Design': 'purple-500',
-    'EES': 'blue-500',
-    'Engineering': 'yellow-500',
-    'Geoscience': 'purple-500',
-    'Information Technology': 'green-500',
-    'Mathematics': 'blue-500',
-    'STEM Education' : 'purple-500',
-    'Software Engineering': 'yellow-500',
+    'Computer Science': 'purple-500',
+    'Cybersecurity': 'purple-500',
+    'Design': 'orange-500',
+    'EES': 'indigo-500',
+    'Engineering': 'rose-500',
+    'Geoscience': 'indigo-500',
+    'Information Technology': 'purple-500',
+    'Mathematics': 'green-500',
+    'STEM Education' : 'teal-400',
+    'Software Engineering': 'purple-500'
     // Add more mappings as needed
 };
+
+
 
 export const seminarTypeColorMap = {
     Lecture: 'green-500',
