@@ -26,11 +26,21 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   try {
-    if (!globalUserData.jwt) {
-      const response = await fetch('/api/get-jwt');
-      const data = await response.json();
-      globalUserData.jwt = data.token;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const jwtFromQuery = urlParams.get('user');
+    console.log('jwtFromQuery:', jwtFromQuery);
+
+    if (jwtFromQuery && !globalUserData.jwt) {
+      globalUserData.jwt = jwtFromQuery;
     }
+
+    if (!globalUserData.jwt) {
+      console.error('No JWT found');
+      next('/error');
+      return;
+    }
+
     if(!globalUserData.user) {
       const response = await fetch('/api/users', {
         method: 'POST',
