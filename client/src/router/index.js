@@ -43,6 +43,11 @@ router.beforeEach(async (to, from, next) => {
 
     if (jwtFromQuery && !globalUserData.jwt) {
       globalUserData.jwt = jwtFromQuery;
+      localStorage.setItem('jwt', jwtFromQuery);
+    }
+
+    if (!globalUserData.jwt) {
+      globalUserData.jwt = localStorage.getItem('jwt');
     }
 
     if (!globalUserData.jwt) {
