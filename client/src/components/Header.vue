@@ -19,7 +19,7 @@
             <router-link to="/schedule" class="nav-item" :class="{ active: $route.path === '/schedule' }" @click="toggleNav">
                 My Schedule
             </router-link>
-            <a href="https://google.com" target="_blank" class="nav-item" @click="toggleNav">
+            <a href="https://utahtech.qualtrics.com/jfe/form/SV_7PXIzOUo8PYSEcK" target="_blank" rel="noopener noreferrer" class="nav-item" @click="toggleNav">
                 Give Feedback
             </a>
         </nav>
