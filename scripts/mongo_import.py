@@ -17,7 +17,7 @@ def import_csv_to_mongodb(input_file, mongo_uri, database_name, collection_name)
     print(f"Data imported successfully into {database_name}.{collection_name}")
 
 # Replace the following variables with your specific details
-input_csv = "Preprocessed_Seminarium_Test_Data.csv"
+input_csv = "Preprocessed_Seminarium_Data.csv"
 mongo_uri = "mongodb://localhost:27017"
 database_name = "seminarium"
 collection_name = "seminars"
