@@ -26,7 +26,7 @@ const parseTime = (timeString) => {
 };
 
 const formatTime = (hour, minute) => {
-    const suffix = hour >= 12 ? 'PM' : 'AM';
+    const suffix = hour >= 12 ? ' PM' : ' AM';
     const formattedHour = hour % 12 || 12;
     return `${formattedHour}:${minute.toString().padStart(2, '0')}${suffix}`;
 };
