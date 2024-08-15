@@ -1,6 +1,7 @@
 <template>
     <div class="flex flex-col items-center gap-2 w-100">
         <h1 class="text-3xl font-bold">Upcoming Seminars</h1>
+        <h3 class="text-xl">Click on seminars to view details and build your schedule!</h3>
         <div class="flex flex-row justify-end w-5/6 mt-2">
             <button v-if="!isDropdownOpen" @click="toggleDropdown" class="px-4 py-2 bg-zinc-600 text-white rounded-md">
                 Show Filters
